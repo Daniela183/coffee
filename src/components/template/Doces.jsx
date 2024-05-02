@@ -1,38 +1,37 @@
 import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
-import { Box } from '@mui/material';
-import doces from '../../img/doces.png'
+import { Box, ImageListItemBar } from '@mui/material';
+import doces from '../../img/doces.PNG'
 
 
 export default function Doces() {
     return (
-        <ImageList style={{ marginLeft: '30%', backgroundColor:'#e0b68a' }} sx={{ width: 500, height: 450 }}>
+        <ImageList sx={{width: '100vh', marginTop:'8%', marginLeft:'22%' }}>
             <ImageListItem key="Subheader" cols={2}>
                 <ListSubheader component="div">
-                    <Box >
+                    <Box display="flex" width="100%" justifyContent="center">
                         <img className='logo' style={{ height: '100px', width: '300px', justifyItems: 'center' }} src={doces} alt="logo" />
                     </Box>
                 </ListSubheader>
             </ImageListItem>
             {itemData.map((item) => (
-                <ImageListItem key={item.img}>
+                <ImageListItem key={item.img} >
                     <img
                         srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
                         src={`${item.img}?w=248&fit=crop&auto=format`}
                         alt={item.title}
                         loading="lazy"
+                        width="40%"
                     />
-                    <ImageListItemBar
+                      <ImageListItemBar
                         title={item.title}/>
                 </ImageListItem>
             ))}
         </ImageList>
     );
 }
-
 const itemData = [
     {
         img: 'https://static.wixstatic.com/media/83687c_4a1b79692b504373b510bafda2bec5d9~mv2.jpg/v1/fill/w_341,h_511,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/83687c_4a1b79692b504373b510bafda2bec5d9~mv2.jpg',

@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { styled, alpha  } from '@mui/material/styles';
+import { styled, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-//import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
@@ -11,28 +10,16 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-//import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-//import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-//import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-//import LocalDrinkOutlinedIcon from '@mui/icons-material/LocalDrinkOutlined';
-//import MailIcon from '@mui/icons-material/Mail';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
 import logo from '../../img/logo.png'
 import { Link } from '@mui/material';
 import { useNavigate } from 'react-router';
-//import { Typography } from '@mui/material';
-import Bebidas from './Bebidas';
-import Salgados from './Salgados';
-import Doces from './Doces';
-import Home from './Home';
-import Cardapio from './Cardapio';
-//import router from "../../router/Routes"
+import cadastro from './Cadastro'
 
 const drawerWidth = 240;
 
@@ -70,16 +57,6 @@ const Search = styled('div')(({ theme }) => ({
     },
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-}));
-
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
     width: '100%',
@@ -96,7 +73,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         },
     },
 }));
-
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
@@ -126,9 +102,11 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 
-export default function PersistentDrawerLeft() {
+export default function Nav({ children }) {
     //const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+
+    const nav = useNavigate();
 
     const navigate = useNavigate();
 
@@ -145,13 +123,16 @@ export default function PersistentDrawerLeft() {
     };
 
     const handleSearchClick = () => {
+        alert("Em desenvolvimento");
         //Lógica para pesquisa
     };
 
     const handleShoppingClick = () => {
-        //Lógica para sacola
-    }
+        nav("/cadastro")
+
+    };
     const opcoesMenu = [
+        { nome: 'Home', url: '/' },
         { nome: 'Cardapio', url: '/cardapio' },
         { nome: 'Bebidas', url: '/bebidas' },
         { nome: 'Doces', url: '/doces' },
@@ -160,7 +141,7 @@ export default function PersistentDrawerLeft() {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <AppBar position="fixed" open={open}>
+            <AppBar position="absolute" open={open}>
                 <Toolbar style={{ backgroundColor: '#fff' }}>
                     <IconButton
                         color="#000"
@@ -169,10 +150,10 @@ export default function PersistentDrawerLeft() {
                         sx={{ mr: 2, ...(open && { display: 'none' }) }}>
                         <MenuIcon />
                     </IconButton>
-                    <Box style={{ marginLeft: '42%' }}>
-                        <img className='logo' style={{ height: '100px', width: '100px', justifyItems: 'center' }} src={logo} alt="logo" />
+                    <Box style={{ marginLeft:'43%'}}>
+                        <img className='logo' style={{ height: '100px', width: '100px' }} src={logo} alt="logo" />
                     </Box>
-                    
+
                     <IconButton style={{ position: 'absolute', right: '45px' }}
                         onClick={handleSearchClick} >
                         <SearchOutlinedIcon />
@@ -181,19 +162,14 @@ export default function PersistentDrawerLeft() {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </IconButton>
-                    <IconButton style={{ position: 'absolute', right: '15px' }}
-                    onClick={handleShoppingClick}>
-                        <ShoppingBagOutlinedIcon />
+                    <IconButton style={{ position: 'absolute', right: '15px' }}>
+                        <ShoppingBagOutlinedIcon onClick={handleShoppingClick}/>
                     </IconButton>
+
                 </Toolbar>
-
-
-                <Bebidas />
-                <Salgados />
-                <Doces />
             </AppBar>
-            <Toolbar  >
-                <Bebidas />
+            <Toolbar>
+
             </Toolbar>
             <Drawer
                 sx={{
@@ -202,13 +178,11 @@ export default function PersistentDrawerLeft() {
                     '& .MuiDrawer-paper': {
                         width: drawerWidth,
                         boxSizing: 'border-box',
-
                     },
                 }}
                 variant="persistent"
                 anchor="left"
                 open={open}>
-
                 <DrawerHeader>
                     <IconButton onClick={handleDrawerClose}>
                         <CloseOutlinedIcon />
@@ -239,8 +213,10 @@ export default function PersistentDrawerLeft() {
             </Drawer>
 
             <Main open={open}>
-                <DrawerHeader />
+
+                {children}
             </Main>
+
         </Box>
     );
 }

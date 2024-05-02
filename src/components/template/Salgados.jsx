@@ -4,15 +4,15 @@ import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import { Box } from '@mui/material';
-import salgado from '../../img/salgado.png'
+import salgado from '../../img/salgados.PNG'
 
 
 export default function Salgados() {
     return (
-        <ImageList style={{ marginLeft: '30%', backgroundColor:'#e0b68a' }} sx={{ width: 500, height: 450 }}>
+        <ImageList sx={{width: '100vh', marginTop:'7%', marginLeft:'22%' }}>
             <ImageListItem key="Subheader" cols={2}>
                 <ListSubheader component="div">
-                    <Box >
+                    <Box display="flex" width="100%" justifyContent="center">
                         <img className='logo' style={{ height: '100px', width: '300px', justifyItems: 'center' }} src={salgado} alt="logo" />
                     </Box>
                 </ListSubheader>
@@ -24,6 +24,7 @@ export default function Salgados() {
                         src={`${item.img}?w=248&fit=crop&auto=format`}
                         alt={item.title}
                         loading="lazy"
+                        width="40%"
                     />
                     <ImageListItemBar
                         title={item.title}/>

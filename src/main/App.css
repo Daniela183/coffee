@@ -21,7 +21,6 @@
 
 .app {
     margin: 0px;
-    display: grid;
     grid-template-columns: var(--aside-width) 1fr;
     grid-template-rows:
         var(--header-height)

@@ -1,32 +1,29 @@
-
 import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import { Box } from '@mui/material';
-import bebidas from '../../img/bebidas.png'
-import doces from '../../img/doces.png';
-import salgado from '../../img/salgado.png';
-
+import cardapio from '../../img/cardapio.PNG'
 
 export default function Cardapio() {
     return (
-        <ImageList style={{ marginLeft: '30%', backgroundColor: '#e0b68a' }} sx={{ width: 500, height: 450 }}>
+        <ImageList sx={{width: '100vh', marginTop:'7%', marginLeft:'22%' }}>
             <ImageListItem key="Subheader" cols={2}>
-                <ListSubheader component="div">
-                    <Box >
-                        <img className='bebidas' style={{ height: '100px', width: '300px', justifyItems: 'center' }} src={bebidas} alt="bebidas" />
+                <ListSubheader component="div"  >
+                    <Box display="flex" width="100%" justifyContent="center">
+                        <img className='bebidas' style={{ height: '100px', width: '300px', justifyItems: 'center' }} src={cardapio} alt="bebidas" />
                     </Box>
                 </ListSubheader>
             </ImageListItem>
             {itemData.map((item) => (
-                <ImageListItem key={item.img}>
+                <ImageListItem key={item.img} >
                     <img
                         srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
                         src={`${item.img}?w=248&fit=crop&auto=format`}
                         alt={item.title}
                         loading="lazy"
+                        width="40%"
                     />
                     <ImageListItemBar
                         title={item.title} />
@@ -42,7 +39,6 @@ const itemData = [
         title: 'CAFÉ MOCHA',
         rows: 2,
         cols: 2,
-
     },
     {
         img: 'https://static.wixstatic.com/media/83687c_d9fcdf0898704e7cb3535fcaf24c97db~mv2.jpg/v1/fill/w_454,h_681,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/83687c_d9fcdf0898704e7cb3535fcaf24c97db~mv2.jpg',
@@ -66,10 +62,6 @@ const itemData = [
         img: 'https://static.wixstatic.com/media/83687c_cd86072ef4904e3990132b009dd5f747~mv2.jpg/v1/fill/w_437,h_681,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/83687c_cd86072ef4904e3990132b009dd5f747~mv2.jpg',
         title: 'CAFÉ BRIGADEIRO',
         cols: 2,
-    },
-    {
-        img: 'https://drive.google.com/file/d/1muNnsk1Qb4shMgQAV16mOy9y2a6fmJdK/view?usp=sharing'
-
     }
     ,{
         img: 'https://static.wixstatic.com/media/83687c_4a1b79692b504373b510bafda2bec5d9~mv2.jpg/v1/fill/w_341,h_511,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/83687c_4a1b79692b504373b510bafda2bec5d9~mv2.jpg',
@@ -96,6 +88,7 @@ const itemData = [
         title: 'CHEESECAKE FRUTAS VERMELHAS',
         cols: 2,
     },
+    
     {
         img: 'https://static.wixstatic.com/media/83687c_0fd1b873b6024479b9a2c777773ea0c9~mv2.jpg/v1/fill/w_341,h_511,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/83687c_0fd1b873b6024479b9a2c777773ea0c9~mv2.jpg',
         title: 'VANDERLÉIA',

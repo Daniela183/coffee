@@ -1,31 +1,31 @@
 import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
-import { Box } from '@mui/material';
-import bebidas from '../../img/bebidas.png'
+import { Box, ImageListItemBar } from '@mui/material';
+import bebidas from '../../img/bebidas.PNG'
 
 
 export default function Bebidas() {
     return (
-        <ImageList style={{ marginLeft: '30%', backgroundColor:'#e0b68a' }} sx={{ width: 500, height: 450 }}>
-            <ImageListItem key="Subheader" cols={2}>
+        <ImageList sx={{width: '100vh', marginTop:'7%', marginLeft:'22%' }}>
+            <ImageListItem key="Subheader" cols={2} >
                 <ListSubheader component="div">
-                    <Box >
+                    <Box display="flex" width="100%" justifyContent="center">
                         <img className='logo' style={{ height: '100px', width: '300px', justifyItems: 'center' }} src={bebidas} alt="logo" />
                     </Box>
                 </ListSubheader>
             </ImageListItem>
             {itemData.map((item) => (
-                <ImageListItem key={item.img}>
+                <ImageListItem key={item.img} >
                     <img
                         srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
                         src={`${item.img}?w=248&fit=crop&auto=format`}
                         alt={item.title}
                         loading="lazy"
+                        width="40%"
                     />
-                    <ImageListItemBar
+                      <ImageListItemBar 
                         title={item.title}/>
                 </ImageListItem>
             ))}
